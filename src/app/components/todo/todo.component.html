@@ -1,7 +1,17 @@
-<div class="todo">
+<div class="todo" (dblclick)="onToggle(todo)">
+    <span class="status"
+    [ngClass]="{
+        'open' :todo.status === 'OPEN',
+        'in-progress' :todo.status === 'PROGRESS',
+        'done' :todo.status === 'DONE',
+        'testing' :todo.status === 'TESTING'
+    }"
+    > {{todo.status}} 
+
+    </span>
     <h3> 
         {{ todo.text }}
-        <fa-icon [icon]="faTimes"></fa-icon>
+        <fa-icon [icon]="faTimes" (click)="onDelete(todo)"></fa-icon>
     </h3>
     <p> {{ todo.deadline }} </p>
 

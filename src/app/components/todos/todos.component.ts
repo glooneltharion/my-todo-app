@@ -17,6 +17,35 @@ export class TodosComponent implements OnInit {
   constructor(private todoSerrvice: TodoService){}
 
   ngOnInit(): void {
-    this.todos = this.todoSerrvice.getTodos();
+    this.todoSerrvice.getTodos().subscribe(todos => {
+      this.todos = todos;
+    });
+  }
+
+  deleteTodo(todo: Todo){
+    this.todoSerrvice.deleteTodo(todo).subscribe(
+      () => (this.todos = this.todos.filter((t) => t.id !== todo.id))
+    );
+    console.log(todo);
+  }
+
+  toggleStatus(todo: Todo){
+    switch(todo.status){
+      case 'OPEN': 
+      todo.status = 'PROGRESS'
+      break;
+      case 'PROGRESS': 
+      todo.status = 'TESTING'
+      break;
+      case 'TESTING': 
+      todo.status = 'DONE'
+      break;
+      case 'DONE': 
+      break;
+      default:
+      break;
+    }
+    console.log(todo.status);
+    this.todoSerrvice.updateTodoStatus(todo).subscribe();
   }
 }
