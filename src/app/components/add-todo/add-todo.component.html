@@ -1,0 +1,28 @@
+<form class="add-form" (ngSubmit)="onSubmit()">
+    <div class="form-control">
+        <label for="text">Todo</label>
+        <input type="text" id="text" name="text" placeholder="Add Todo" [(ngModel)]="text">
+    </div>
+    <div class="form-control">
+        <label for="deadline">Todo</label>
+        <input type="text" id="deadline" name="deadline" placeholder="Add Todo Deadline" [(ngModel)]="deadline">
+    </div>
+    <div class="form-control form-control-check">
+        <label for="status">Status Options:</label>
+        <div>
+            <label for="statusProgress">In Progress</label>
+            <input type="radio" id="statusProgress" name="status" value="PROGRESS" [(ngModel)]="status">
+        </div>
+        <div>
+            <label for="statusTesting">Testing</label>
+            <input type="radio" id="statusTesting" name="status" value="TESTING" [(ngModel)]="status">
+        </div>
+        <div>
+            <label for="statusDone">Done</label>
+            <input type="radio" id="statusDone" name="status" value="DONE" [(ngModel)]="status">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-block">Save Todo</button>
+</form>
+
+

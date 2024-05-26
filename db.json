@@ -19,10 +19,10 @@
       "status": "DONE"
     },
     {
-      "id": "4",
-      "text": "DB Connection",
-      "deadline": "12.6.2024",
-      "status": "TESTING"
+      "id": "86ff",
+      "text": "Angular App",
+      "deadline": "26.5.2024",
+      "status": "PROGRESS"
     }
   ]
 }

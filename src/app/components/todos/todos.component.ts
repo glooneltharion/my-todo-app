@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Todo } from '../../models/Todo';
 import { CommonModule } from '@angular/common';
 import { TodoComponent } from '../todo/todo.component';
+import { AddTodoComponent } from '../add-todo/add-todo.component';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todos',
   standalone: true,
-  imports: [CommonModule, TodoComponent],
+  imports: [CommonModule, TodoComponent, AddTodoComponent],
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.css'
 })
@@ -47,5 +48,11 @@ export class TodosComponent implements OnInit {
     }
     console.log(todo.status);
     this.todoSerrvice.updateTodoStatus(todo).subscribe();
+  }
+
+  addTodo(todo: Todo){
+    this.todoSerrvice.addTodo(todo).subscribe((todo) =>
+      this.todos.push(todo)
+    );
   }
 }

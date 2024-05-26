@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
-import { TODOS } from '../mock-data'
 import { Todo } from '../models/Todo';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+const httpoptions = {
+  headers: new HttpHeaders({
+    'Content-Type' : 'aplication/json',
+  })
+}
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +30,10 @@ export class TodoService {
   updateTodoStatus(todo: Todo): Observable<Todo>{
     const url = `${this.apiUrl}/${todo.id}`;
     return this.http.put<Todo>(url, todo);
+  }
+
+  addTodo(todo: Todo): Observable<Todo>{
+    return this.http.post<Todo>(this.apiUrl, todo, httpoptions);
   }
 
 }
